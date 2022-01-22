@@ -265,12 +265,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Starter Page</h1>
+                            <h1 class="m-0">Category Edit</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Starter Page</li>
+                                <li class="breadcrumb-item active"><a
+                                        href="{{ route('categories.index') }}">Index</a>
+                                </li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -278,69 +280,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.content-header -->
 
+
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's
-                                        content.
-                                    </p>
-
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary card-outline">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's
-                                        content.
-                                    </p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div><!-- /.card -->
-                        </div>
-                        <!-- /.col-md-6 -->
-                        <div class="col-lg-6">
-                            <div class="card">
+                            <!-- general form elements -->
+                            <div class="card card-primary">
                                 <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
+                                    <h3 class="card-title">Category</h3>
                                 </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form action="{{ url('categories/' . $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" name="category_name" class="form-control" id="name"
+                                                value="{{ $category->name }}" placeholder="Enter Category Name">
+                                        </div>
 
-                                    <p class="card-text">With supporting text below as a natural lead-in to
-                                        additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
+                                    </div>
+                                    <!-- /.card-body -->
 
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
-
-                                    <p class="card-text">With supporting text below as a natural lead-in to
-                                        additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <!-- /.col-md-6 -->
                     </div>
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
