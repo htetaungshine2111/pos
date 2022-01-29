@@ -19,6 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="dist/css/adminlte.min.css"> --}}
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -228,7 +229,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
+                            <li class="nav-item">
                                     <a href="{{ route('categories.index') }}" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Category</p>
@@ -271,12 +272,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Starter Page</h1>
+                            <h1 class="m-0">SubCategory List</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Starter Page</li>
+                                <li class="breadcrumb-item active"><a
+                                        href="{{ route('subcategory.create') }}">Create</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -284,69 +286,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.content-header -->
 
+
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's
-                                        content.
-                                    </p>
-
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary card-outline">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's
-                                        content.
-                                    </p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div><!-- /.card -->
-                        </div>
-                        <!-- /.col-md-6 -->
-                        <div class="col-lg-6">
-                            <div class="card">
                                 <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
+                                    <h3 class="card-title">Bordered Table</h3>
                                 </div>
+                                <!-- /.card-header -->
+                                {{-- <div class="d-flex justify-content-center">
+                                    {{ $subcategory->links() }}
+                                </div> --}}
+
                                 <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Category Name</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($subcategory as $subcategory)
+                                                <tr>
+                                                    <td>{{ $subcategory->id }}</td>
+                                                    <td>{{ $subcategory->subcategoryname }}</td>
+                                                    <td>{{ $subcategory->categories->name }}</td>
+                                                    <td align="center">
+                                                        <a href="{{ route('subcategory.edit', $subcategory->id) }}"
+                                                            class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a href="{{ route('subcategory.delete', $subcategory->id) }}"
+                                                            class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
 
-                                    <p class="card-text">With supporting text below as a natural lead-in to
-                                        additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
-
-                                    <p class="card-text">With supporting text below as a natural lead-in to
-                                        additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.col-md-6 -->
                     </div>
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->

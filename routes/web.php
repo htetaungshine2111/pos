@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('categories', CategoryController::class);
 Route::get('category/delete/{id}', ['as' => 'category.delete', 'uses' => 'App\Http\Controllers\CategoryController@destroy']);
+
+Route::resource('subcategory', SubCategoryController::class);
+Route::get('subcategory/delete/{id}', ['as' => 'subcategory.delete', 'uses' => 'App\Http\Controllers\SubCategoryController@destroy']);
