@@ -15,8 +15,8 @@ class CreateColorsTable extends Migration
     {
         Schema::create('colors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('hexcolor');
+            $table->string('name')->nullable();
+            $table->string('hexcolor')->nullable();
             $table->timestamps();
         });
     }
